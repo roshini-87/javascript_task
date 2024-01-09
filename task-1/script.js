@@ -115,4 +115,87 @@ function checkNumber() {
         }
     }
 }
+function runLoops() {
+    const startValueInput = document.getElementById("startValue");
+    const endValueInput = document.getElementById("endValue");
+    const arrayLengthInput = document.getElementById("arrayLength");
+    const outputDiv = document.getElementById("output");
 
+    const startValue = parseInt(startValueInput.value);
+    const endValue = parseInt(endValueInput.value);
+    const arrayLength = parseInt(arrayLengthInput.value);
+
+    if (!isNaN(startValue) && !isNaN(endValue) && startValue < endValue && !isNaN(arrayLength) && arrayLength > 0) {
+        let i = startValue;
+        let resultWhileLoop = "";
+        let resultForLoop = "Array Values:";
+
+        // While loop from startValue to endValue
+        while (i < endValue) {
+            resultWhileLoop += i + "<br>";
+            i++;
+        }
+
+        // For loop for array input
+        const userArray = [];
+        for (let j = 0; j < arrayLength; j++) {
+            const userInput = prompt(`Enter value for index ${j}:`);
+            const parsedValue = parseInt(userInput);
+
+            if (!isNaN(parsedValue)) {
+                userArray.push(parsedValue);
+            } else {
+                alert("Invalid input. Please enter a valid numerical value.");
+                return;
+            }
+        }
+
+        userArray.forEach(value => {
+            console.log(value);
+            resultForLoop += "<br>" + value;
+        });
+
+        // Display the results in the output div
+        outputDiv.innerHTML = `<p>While Loop Result:</p>${resultWhileLoop}<p>${resultForLoop}</p>`;
+    } else {
+        // Display an error message if input is invalid
+        outputDiv.innerHTML = "Invalid input";
+    }
+}
+// Base class Animal
+class Animal {
+    constructor(name, sound) {
+        this.name = name;
+        this.sound = sound;
+    }
+
+    makeSound() {
+        return `${this.name} says ${this.sound}`;
+    }
+
+    // Static method to create an Animal from user input
+    static createFromInput(nameInput, soundInput) {
+        return new Animal(nameInput, soundInput);
+    }
+}
+
+// Derived class Dog inheriting from Animal
+class Dog extends Animal {
+    }
+
+// Function to create an Animal and display its sound
+function createAnimal() {
+    const nameInput = document.getElementById("animalName").value;
+    const soundInput = document.getElementById("animalSound").value;
+    const outputDiv = document.getElementById("class");
+
+    if (nameInput && soundInput) {
+        // Create an Animal using the static method
+        const newAnimal = Animal.createFromInput(nameInput, soundInput);
+
+        // Display the sound of the created Animal
+        outputDiv.innerHTML = newAnimal.makeSound();
+    } else {
+        outputDiv.innerHTML = "Please enter both animal name and sound.";
+    }
+}

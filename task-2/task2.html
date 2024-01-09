@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Demo</title>
+    <script defer src="hello.js"></script>
+</head>
+<body>
+	<h1>Random Integers</h1>
+
+    <form id="inputForm">
+        <button type="button" onclick="generateRandomIntegersAndDivide()">Generate</button>
+    </form>
+
+    <div id="int"></div>
+    <h1>String value</h1>
+
+    <form id="inputForm">
+        <label for="inputString">Enter a String (length of 10):</label>
+        <input type="text" id="inputString" minlength="10" maxlength="10" required>
+		<br><br>
+        <button type="button" onclick="processString()">Process String</button>
+    </form>
+
+    <div id="string"></div>
+	
+</body>
+</html>
