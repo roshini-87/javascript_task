@@ -1,6 +1,6 @@
 function processString() {
     const inputString = document.getElementById("inputString").value.trim();
-    const outputDiv = document.getElementById("output");
+    const outputDiv = document.getElementById("string");
 
     if (inputString.length === 10) {
         const stringWithDollars = inputString.match(/.{1}/g).join('$');
